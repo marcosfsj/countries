@@ -1,9 +1,15 @@
 import React from "react";
 
-const CountriesList = () => {
+const CountriesList = ({list}) => {
     return (
         <div>
-            List of countries
+            <ul>
+                {list.map(country => 
+                    <li>
+                        <h3>{country.id} - {country.population}</h3>
+                    </li>
+                )}
+            </ul>
         </div>
     );
 }
