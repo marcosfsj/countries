@@ -1,10 +1,14 @@
-import React from "react";
+import React, {useContext} from "react";
+import {CountriesContext} from '../providers/Countries.provider';
 
-const CountriesList = ({list}) => {
+const CountriesList = () => {
+
+    const {countries} = useContext(CountriesContext); 
+
     return (
         <div>
             <ul>
-                {list.map(country => 
+                {countries.map(country => 
                     <li>
                         <h3>{country.id} - {country.population}</h3>
                     </li>

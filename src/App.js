@@ -1,4 +1,4 @@
-import Countries from "./pages/countries/countries.component";
+import Countries from "./pages/countries/countries.page";
 
 function App() {
   return (

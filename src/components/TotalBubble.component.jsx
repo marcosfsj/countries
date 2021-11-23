@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {CountriesContext} from '../providers/Countries.provider';
 
-const TotalBubble = ({list}) => {
+const TotalBubble = () => {
+
+    const {countries} = useContext(CountriesContext);
+
     return (
         <span>
-            {`Total: ${list.length}`}
+            {`Total: ${countries.length}`}
         </span>
     );
 }
