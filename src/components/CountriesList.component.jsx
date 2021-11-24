@@ -1,10 +1,14 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect} from "react";
 import {CountriesContext} from '../providers/Countries.provider';
 
 const CountriesList = () => {
 
-    const {countries} = useContext(CountriesContext); 
+    const {countries, setCountries} = useContext(CountriesContext); 
 
+    useEffect(() => {
+        setCountries([{id: 1, population: 10}, {id: 2, population: 20}]);
+    }, [setCountries]);
+    
     return (
         <div>
             <ul>

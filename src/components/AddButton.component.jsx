@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {CountriesContext} from '../providers/Countries.provider';
 
-const AddButton = ({lable}) => {
+const AddButton = () => {
 
     const {countries, setCountries} = useContext(CountriesContext)
 
@@ -11,7 +11,7 @@ const AddButton = ({lable}) => {
 
     return (
         <button onClick={handleOnClick}>
-            {`Add ${lable}`}
+            {`Add Countries`}
         </button>
     );
 }

@@ -6,6 +6,8 @@ import TotalBubble from '../../components/TotalBubble.component';
 import SumBubble from '../../components/SumBubble.component';
 import CountriesProvider from '../../providers/Countries.provider';
 
+// TODO: study meno function from react
+
 const Countries = () => {
     return (
         <CountriesProvider>
@@ -14,7 +16,7 @@ const Countries = () => {
                 <TotalBubble />
                 <SumBubble />
                 <CountriesList />
-                <AddButton lable={'Country'} />
+                <AddButton />
             </div>
         </CountriesProvider>
     );
