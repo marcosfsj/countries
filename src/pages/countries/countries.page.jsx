@@ -1,9 +1,9 @@
 import React from 'react';
-import PageTitle from '../../components/PageTitle.component';
-import CountriesList from '../../components/CountriesList.component';
-import AddButton from '../../components/AddButton.component';
-import TotalBubble from '../../components/TotalBubble.component';
-import SumBubble from '../../components/SumBubble.component';
+import PageTitle from '../../components/page-title.component';
+import CountriesList from './countries-list.component';
+import AddButton from '../../components/add-button.component';
+import TotalBubble from '../../components/total-bubble.component';
+import SumBubble from '../../components/sum-bubble.component';
 import CountriesProvider from './countries.provider';
 
 // TODO: study meno function from react

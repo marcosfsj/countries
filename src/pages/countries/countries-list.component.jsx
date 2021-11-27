@@ -1,5 +1,5 @@
 import React, {useContext, useEffect} from "react";
-import {CountriesContext} from '../pages/countries/countries.provider';
+import {CountriesContext} from './countries.provider';
 
 const CountriesList = () => {
 
