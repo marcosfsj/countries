@@ -1,18 +1,9 @@
-import React, {useContext} from 'react';
-import {CountriesContext} from '../pages/countries/countries.provider';
+import React from 'react';
 
-const SumBubble = () => {
-
-    const {countries} = useContext(CountriesContext);
-
-    const sumValue = () => {
-        const reducer = (previousValue, currentValue) => {return previousValue + currentValue.population};
-        return countries.reduce(reducer, 0);
-    }
-
+const SumBubble = ({value}) => {
     return (
         <span>
-            {`Sum: ${sumValue()}`}
+            {`Sum: ${value}`}
         </span>
     );
 }

@@ -1,17 +1,9 @@
-import React, {useContext} from 'react';
-import {CountriesContext} from '../pages/countries/countries.provider';
+import React from 'react';
 
-const AddButton = () => {
-
-    const {countries, setCountries} = useContext(CountriesContext)
-
-    const handleOnClick = () => {
-        setCountries([...countries, {id:3, population:20}])
-    };
-
+const AddButton = ({handleOnClick}) => {
     return (
         <button onClick={handleOnClick}>
-            {`Add Countries`}
+            {`Add`}
         </button>
     );
 }
