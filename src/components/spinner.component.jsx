@@ -4,16 +4,13 @@ import styled from "styled-components";
 
 const MainPanel = styled.div`
   display: flex;
+  position: absolute;
   justify-content: center;
   align-items: center;
-  zindex: 9999;
+  z-index: 9999;
   height: 100vh;
-  width: 100%;
-  background-image: linear-gradient(
-    to right,
-    rgba(171, 178, 185, 0),
-    rgba(171, 178, 185, 1)
-  );
+  width: 100vw;
+  background-color: rgba(255, 255, 255, 0.5);
 `;
 
 const Spinner = ({ isLoading }) => {
@@ -23,13 +20,7 @@ const Spinner = ({ isLoading }) => {
 
   return (
     <MainPanel>
-      <Loader
-        type="Puff"
-        color="#D35400"
-        height={100}
-        width={100}
-        timeout={3000}
-      />
+      <Loader type="Puff" color="#D35400" height={100} width={100} />
     </MainPanel>
   );
 };
