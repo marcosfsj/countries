@@ -11,7 +11,7 @@ const MainPanel = styled.div`
   z-index: 9999;
   height: 100vh;
   width: 100vw;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(40, 55, 71, 0.7);
 `;
 
 const Spinner = () => {
@@ -28,4 +28,4 @@ const Spinner = () => {
   );
 };
 
-export default Spinner;
+export default React.memo(Spinner);
