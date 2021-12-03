@@ -4,9 +4,8 @@ import { CACHE_NAME, getAllTodos } from "../../api/todos/todos.api";
 import { SpinnerContext } from "../../providers/spinner.provider";
 
 const TodosReactQueryList = () => {
+  const { isLoading, error, data } = useQuery(CACHE_NAME, getAllTodos);
   const { setIsLoading } = useContext(SpinnerContext);
-  const info = useQuery(CACHE_NAME, getAllTodos);
-  const { isLoading, error, data } = info;
 
   useEffect(() => {
     setIsLoading(isLoading);

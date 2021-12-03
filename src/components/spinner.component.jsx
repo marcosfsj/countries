@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import Loader from "react-loader-spinner";
 import styled from "styled-components";
+import { SpinnerContext } from "../providers/spinner.provider";
 
 const MainPanel = styled.div`
   display: flex;
@@ -13,7 +14,9 @@ const MainPanel = styled.div`
   background-color: rgba(255, 255, 255, 0.5);
 `;
 
-const Spinner = ({ isLoading }) => {
+const Spinner = () => {
+  const { isLoading } = useContext(SpinnerContext);
+
   if (!isLoading) {
     return null;
   }
