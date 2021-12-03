@@ -1,16 +1,21 @@
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { ReactQueryDevtools } from 'react-query/devtools';
+import React, { useContext } from "react";
+import { Routes, Route } from "react-router-dom";
 import TodosContextApi from "./pages/todos-context-api/todos-context-api.page";
-
-// Create a client
-const queryClient = new QueryClient();
+import TodosReactQuery from "./pages/todos-react-query/todos-react-query.page";
+import Spinner from "./components/spinner.component";
+import { SpinnerContext } from "./providers/spinner.provider";
 
 function App() {
+  const { isLoading } = useContext(SpinnerContext);
   return (
-    <QueryClientProvider client={queryClient}>
-      <TodosContextApi />
-      <ReactQueryDevtools initialIsOpen={false} />
-    </QueryClientProvider>
+    <>
+      <Spinner isLoading={isLoading} />
+      <Routes>
+        <Route path="/" element={<TodosReactQuery />} />
+        <Route path="/context-api" element={<TodosContextApi />} />
+        <Route path="/react-query" element={<TodosReactQuery />} />
+      </Routes>
+    </>
   );
 }
 
