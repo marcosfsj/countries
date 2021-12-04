@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { useQuery } from "react-query";
 import { CACHE_NAME, getAllTodos } from "../../api/todos/todos.api";
 import PageTitle from "../../components/page-title.component";
@@ -15,11 +15,6 @@ const MainPanel = styled.div`
 const TodosReactQuery = () => {
   const { isLoading, error, data } = useQuery(CACHE_NAME, getAllTodos);
   const { setIsLoading } = useContext(SpinnerContext);
-  const [openAdd, toggleOpenAdd] = useState(false);
-
-  const onToggleOpenAdd = () => {
-    toggleOpenAdd(!openAdd);
-  };
 
   useEffect(() => {
     setIsLoading(isLoading);
@@ -48,7 +43,6 @@ const TodosReactQuery = () => {
             </li>
           ))}
         </ul>
-        <button onClick={onToggleOpenAdd}>Add</button>
       </div>
     </MainPanel>
   );
