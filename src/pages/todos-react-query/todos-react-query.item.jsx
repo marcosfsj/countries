@@ -65,7 +65,7 @@ const TodosReactQueryItem = ({ id, description, completed }) => {
           type="checkbox"
           onClick={handleToggleCompleted}
           value="true"
-          checked={completed}
+          defaultChecked={completed}
         />
       </CheckBoxArea>
       <DescriptionArea>

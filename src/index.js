@@ -10,7 +10,7 @@ import reportWebVitals from "./reportWebVitals";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 30000,
+      staleTime: 5000,
     },
   },
 });
