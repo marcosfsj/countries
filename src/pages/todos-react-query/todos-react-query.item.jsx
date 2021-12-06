@@ -1,8 +1,10 @@
-import React, { useContext, useEffect } from "react";
-import { useQuery } from "react-query";
-import { CACHE_NAME, getAllTodos } from "../../api/todos/todos.api";
-import PageTitle from "../../components/page-title.component";
-import { SpinnerContext } from "../../providers/spinner.provider";
+import React from "react";
+import { useQueryClient, useMutation } from "react-query";
+import {
+  CACHE_NAME,
+  deleteTodo,
+  toggleTodoCompleted,
+} from "../../api/todos/todos.api";
 import styled from "styled-components";
 
 const Line = styled.div`
@@ -11,6 +13,7 @@ const Line = styled.div`
   align-items: center;
   width: 80vw;
   height: 40px;
+  border: 1px solid black;
 `;
 
 const CheckBoxArea = styled.div`
@@ -28,19 +31,48 @@ const DeleteButtonArea = styled.div`
   align-items: center;
 `;
 
-const DeleteButton = styled.button``;
+const DeleteButton = styled.button`
+  width: 100px;
+`;
 
-const TodosReactQueryItem = ({ description, completed }) => {
+const TodosReactQueryItem = ({ id, description, completed }) => {
+  const queryClient = useQueryClient();
+
+  const { mutate: remove } = useMutation(deleteTodo, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(CACHE_NAME);
+    },
+  });
+
+  const { mutate: toggleCompleted } = useMutation(toggleTodoCompleted, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(CACHE_NAME);
+    },
+  });
+
+  const handleDeleteClick = () => {
+    remove(id);
+  };
+
+  const handleToggleCompleted = () => {
+    toggleCompleted({ id, description, completed });
+  };
+
   return (
     <Line>
       <CheckBoxArea>
-        <input type="checkbox" value="true" checked={completed} />
+        <input
+          type="checkbox"
+          onClick={handleToggleCompleted}
+          value="true"
+          checked={completed}
+        />
       </CheckBoxArea>
       <DescriptionArea>
         <Description>{description}</Description>
       </DescriptionArea>
       <DeleteButtonArea>
-        <DeleteButton>Delete</DeleteButton>
+        <DeleteButton onClick={() => handleDeleteClick()}>Delete</DeleteButton>
       </DeleteButtonArea>
     </Line>
   );

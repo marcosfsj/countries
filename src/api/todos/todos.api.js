@@ -17,29 +17,33 @@ export const getTodo = async (id) => {
 };
 
 export const createTodo = async (text) => {
-  fetch(`${process.env.REACT_APP_API_SERVER}/task`, {
+  return fetch(`${process.env.REACT_APP_API_SERVER}/task`, {
     method: "POST",
     headers: {
       Authorization: `${process.env.REACT_APP_BEARER}`,
       "Content-type": "application/json",
     },
-    body: JSON.stringify({ text }),
+    body: JSON.stringify({ description: text }),
   }).then((res) => res.json());
 };
 
-export const updateTodo = async (todo) => {
-  fetch(`${process.env.REACT_APP_API_SERVER}/task`, {
+export const toggleTodoCompleted = async (todo) => {
+  return fetch(`${process.env.REACT_APP_API_SERVER}/task/${todo.id}`, {
     method: "PUT",
     headers: {
       Authorization: `${process.env.REACT_APP_BEARER}`,
       "Content-type": "application/json",
     },
-    body: JSON.stringify(todo),
+    body: JSON.stringify({ completed: !todo.completed }),
   }).then((res) => res.json());
 };
 
 export const deleteTodo = async (id) => {
-  fetch(`${process.env.REACT_APP_API_SERVER}/task/${id}`, {
+  return fetch(`${process.env.REACT_APP_API_SERVER}/task/${id}`, {
     method: "DELETE",
+    headers: {
+      Authorization: `${process.env.REACT_APP_BEARER}`,
+      "Content-type": "application/json",
+    },
   }).then(() => id);
 };

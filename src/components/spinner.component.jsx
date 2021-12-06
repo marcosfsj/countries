@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import Loader from "react-loader-spinner";
 import styled from "styled-components";
-import { SpinnerContext } from "../providers/spinner.provider";
+import { useIsFetching, useIsMutating } from "react-query";
 
 const MainPanel = styled.div`
   display: flex;
@@ -15,9 +15,10 @@ const MainPanel = styled.div`
 `;
 
 const Spinner = () => {
-  const { isLoading } = useContext(SpinnerContext);
+  const isFetching = useIsFetching();
+  const isMutating = useIsMutating();
 
-  if (!isLoading) {
+  if (!(isFetching || isMutating)) {
     return null;
   }
 
